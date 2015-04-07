@@ -1,0 +1,194 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/plugins/Vundle.vim
+call vundle#begin('~/.vim/bundle/plugins')
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" git modified detail
+Plugin 'airblade/vim-gitgutter'
+
+" 状态栏插件
+Plugin 'https://github.com/bling/vim-airline'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+" Plugin 'user/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"______________________________
+" ENCODING SETTINGS
+" _____________________________
+" set encoding=utf-8
+" set fileencodings=utf-8.chinese.latin-1
+" set fileencoding=utf-8
+
+"______________________________
+"Plungins Settings
+"______________________________
+"
+" airline
+" let g:Powerline_symbols = 'fancy'
+set laststatus=2
+let g:airline_powerline_fonts = 1
+" set guifont=Monaco_Linux-Powerline
+" set noshowmode
+" set t_Co=256
+" let g:airline_powerline_fonts = 1
+" if !exists('g:airline_symbols')
+"    let g:airline_symbols = {}
+" endif
+" let g:airline_symbols.space = "\ua0"
+"
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.whitespace = 'Ξ'
+" let g:bufferline_echo = 0
+
+
+"
+"______________________________
+" Gerneral Settings
+" _____________________________
+
+set nocompatible " not compatible with the old-fashion vi mode
+set bs=2 "  allow backspacing over everything in insert mode
+set ruler " show the cursor position all the time
+set cursorline " 
+set autoread " auto read when file is changed from outside
+set nu " display line number
+set ts=4 " tabstop 4
+
+filetype on "  Enable filetype detection
+filetype indent on "  Enable filetype detection
+filetype plugin on " Enable filetype-specific plugins
+
+retab "  allow backspacing over everything in insert mode
+
+" auto reload vimrc when editing it
+autocmd! bufwritepost .vim source ~/.vimrc
+
+syntax on
+set hlsearch " serach highlighting
+
+" if has("gui_running")   " GUI color and font settings
+"     if has("gui_gtk2")
+"         set guifont=Bitstream\ Vera\ Sans\ Mono\ 13
+"     else
+"         set guifont=Bitstream_Vera_Sans_Mono:h13
+"     endif
+"     set t_Co=256          " 256 color mode
+"     set cursorline        " highlight current line
+"     colors railscasts
+"     set background=dark
+" else
+"     " terminal color settings
+"     colors wombat256
+"     set background=light
+" endif
+
+set clipboard=unnamed
+set showmatch " Cussor shows match ) or }
+" set showmode " show current mode
+set wildchar=<TAB> "  start wild expansion in the command line using <TAB>
+set wildmenu " wild char completion menu
+
+" ignore these files while expanding wild chars
+set wildignore=*.o,*.class,*.pyc
+
+set autoindent
+set incsearch
+set nobackup
+set copyindent
+set ignorecase
+set smartcase
+set smarttab
+
+" disable sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+" TAB setting {
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+
+au FileType Makefile set noexpandtab
+"}
+
+" status line {
+" set laststatus=2
+" set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \
+" set statusline+=\ \ \ [%{&ff}/%Y]
+" set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\
+" set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
+" 
+" function! CurDir()
+"	let curdir = substitute(getcwd(), $HOME, "~", "")
+"	return curdir
+"endfunction
+
+" function! HasPaste()
+"	if &paste
+"		return '[PASTE]'
+"	else
+"		return ''
+"	endif
+" endfunction
+
+" }
+
+" Remove trailing white spaces
+function StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    %s/\s\+$//e
+    normal 'yz<CR>
+    normal `z
+  endif
+endfunction
+
+
