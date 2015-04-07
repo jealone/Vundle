@@ -1,4 +1,4 @@
-git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/plugins/Vundle.vim
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/plugins/Vundle.vim
 if [ -e ~/.vimrc ];then
     echo "安装将覆盖您当前的配置文件，如有需要，请先备份再安装\n";
 fi
